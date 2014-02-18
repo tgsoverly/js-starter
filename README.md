@@ -1,4 +1,1 @@
-js-starter
-==========
-
-just a grunt project for starting tested js
+Starting point for some test JS libraries

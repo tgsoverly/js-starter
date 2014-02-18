@@ -1,0 +1,8 @@
+{
+  "name": "pole3d",
+  "version": "0.0.1",
+  "dependencies": {
+    "qunit": "~1.14.0",
+    "threejs":"r66"
+  }
+}
