@@ -1,5 +1,5 @@
-var barename = "pole3d"
-var namespace = "Pole3D"
+var barename = "library"
+var namespace = "MyLibrary"
 
 module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-es6-module-transpiler");
@@ -7,6 +7,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-bower-task');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.initConfig({
     clean: {
@@ -15,7 +16,10 @@ module.exports = function(grunt) {
     },
     bower: {
       install: {
-       //just run 'grunt bower:install' and you'll see files from your Bower packages in lib directory
+        options: {
+          targetDir: "vendor"
+          //just run 'grunt bower:install' and you'll see files from your Bower packages in lib directory
+        }
       }
     },
     qunit: {
@@ -56,7 +60,7 @@ module.exports = function(grunt) {
     },
     browser: {
       dist: {
-        src: ["vendor/loader.js", "dist/"+barename+".amd.js"],
+        src: ["vendor/loader/loader.js", "dist/"+barename+".amd.js"],
         dest: "dist/"+barename+".js",
         options: {
           barename: barename,
@@ -87,4 +91,6 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask("default", ["clean", "transpile", "concat:amd", "browser"]);
+  grunt.registerTask("build", ["default"]);
+  grunt.registerTask("test", ["build", "qunit"]);
 }

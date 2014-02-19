@@ -1,1 +1,3 @@
-Starting point for some test JS libraries
+USAGE:
+
+1. Change the files in src
